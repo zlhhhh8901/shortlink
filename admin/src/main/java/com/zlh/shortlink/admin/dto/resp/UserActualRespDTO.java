@@ -5,10 +5,10 @@ import com.zlh.shortlink.admin.common.serialize.PhoneDesensitizationSerializer;
 import lombok.Data;
 
 /**
- * 用户返回参数响应
+ * 用户真实信息，无脱敏
  */
 @Data
-public class UserRespDTO {
+public class UserActualRespDTO {
     private Long id;
 
     /**
@@ -24,12 +24,10 @@ public class UserRespDTO {
     /**
      * 手机号
      */
-    @JsonSerialize(using = PhoneDesensitizationSerializer.class)
     private String phone;
 
     /**
      * 邮箱
      */
     private String mail;
-
 }
