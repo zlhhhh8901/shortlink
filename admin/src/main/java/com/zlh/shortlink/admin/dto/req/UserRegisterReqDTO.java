@@ -1,12 +1,12 @@
-package com.zlh.shortlink.admin.dto.resp;
+package com.zlh.shortlink.admin.dto.req;
 
 import lombok.Data;
 
 /**
- * 用户真实信息，无脱敏
+ * 用户注册请求参数
  */
 @Data
-public class UserActualRespDTO {
+public class UserRegisterReqDTO {
     private Long id;
 
     /**
@@ -18,6 +18,11 @@ public class UserActualRespDTO {
      * 真实姓名
      */
     private String realName;
+
+    /**
+     * 密码
+     */
+    private String password;
 
     /**
      * 手机号
