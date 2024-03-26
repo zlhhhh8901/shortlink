@@ -4,6 +4,7 @@ import cn.hutool.core.bean.BeanUtil;
 import com.zlh.shortlink.admin.common.convention.result.Result;
 import com.zlh.shortlink.admin.common.convention.result.Results;
 import com.zlh.shortlink.admin.dto.req.UserRegisterReqDTO;
+import com.zlh.shortlink.admin.dto.req.UserUpdateReqDTO;
 import com.zlh.shortlink.admin.dto.resp.UserActualRespDTO;
 import com.zlh.shortlink.admin.dto.resp.UserRespDTO;
 import com.zlh.shortlink.admin.service.UserService;
@@ -46,6 +47,12 @@ public class UserController {
     @PostMapping("/api/short-link/v1/user")
     public Result<Void> register(@RequestBody UserRegisterReqDTO registerReqDTO){
         userService.register(registerReqDTO);
+        return Results.success();
+    }
+
+    @PutMapping("/api/short-link/v1/user")
+    public Result<Void> update(@RequestBody UserUpdateReqDTO updateReqDTO){
+        userService.update(updateReqDTO);
         return Results.success();
     }
 }

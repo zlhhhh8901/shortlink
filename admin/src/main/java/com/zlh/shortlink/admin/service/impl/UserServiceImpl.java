@@ -2,6 +2,7 @@ package com.zlh.shortlink.admin.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zlh.shortlink.admin.common.constant.RedisCacheConstant;
@@ -11,6 +12,7 @@ import com.zlh.shortlink.admin.common.enums.UserErrorCodeEnum;
 import com.zlh.shortlink.admin.dao.entity.UserDO;
 import com.zlh.shortlink.admin.dao.mapper.UserMapper;
 import com.zlh.shortlink.admin.dto.req.UserRegisterReqDTO;
+import com.zlh.shortlink.admin.dto.req.UserUpdateReqDTO;
 import com.zlh.shortlink.admin.dto.resp.UserRespDTO;
 import com.zlh.shortlink.admin.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -76,5 +78,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
             lock.unlock();
         }
 
+    }
+
+    @Override
+    public void update(UserUpdateReqDTO updateReqDTO) {
+        //TODO 登录校验
+        LambdaUpdateWrapper<UserDO> updateWrapper = Wrappers.lambdaUpdate(UserDO.class)
+                .eq(UserDO::getUsername, updateReqDTO.getUsername());
+        baseMapper.update(BeanUtil.toBean(updateReqDTO, UserDO.class), updateWrapper);
     }
 }
