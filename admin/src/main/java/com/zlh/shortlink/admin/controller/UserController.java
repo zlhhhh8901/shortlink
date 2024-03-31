@@ -3,9 +3,11 @@ package com.zlh.shortlink.admin.controller;
 import cn.hutool.core.bean.BeanUtil;
 import com.zlh.shortlink.admin.common.convention.result.Result;
 import com.zlh.shortlink.admin.common.convention.result.Results;
+import com.zlh.shortlink.admin.dto.req.UserLoginReqDto;
 import com.zlh.shortlink.admin.dto.req.UserRegisterReqDTO;
 import com.zlh.shortlink.admin.dto.req.UserUpdateReqDTO;
 import com.zlh.shortlink.admin.dto.resp.UserActualRespDTO;
+import com.zlh.shortlink.admin.dto.resp.UserLoginRespDTO;
 import com.zlh.shortlink.admin.dto.resp.UserRespDTO;
 import com.zlh.shortlink.admin.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -50,9 +52,28 @@ public class UserController {
         return Results.success();
     }
 
+    /**
+     * 修改用户
+     */
     @PutMapping("/api/short-link/v1/user")
     public Result<Void> update(@RequestBody UserUpdateReqDTO updateReqDTO){
         userService.update(updateReqDTO);
         return Results.success();
+    }
+
+    /**
+     * 用户登录
+     */
+    @PostMapping("/api/short-link/v1/user/login")
+    public Result<UserLoginRespDTO> login(@RequestBody UserLoginReqDto requestDto){
+        return Results.success(userService.login(requestDto));
+    }
+
+    /**
+     * 检查用户是否登录
+     */
+    @GetMapping("/api/short-link/v1/user/check-login")
+    public Result<Boolean> checkLogin(@RequestParam("username")String username, @RequestParam("token")String token){
+        return Results.success(userService.checkLogin(username, token));
     }
 }
