@@ -52,4 +52,9 @@ public interface UserService extends IService<UserDO> {
      * @return 登录过则返回 true
      */
     Boolean checkLogin(String username, String token);
+
+    /**
+     * 用户退出登录状态
+     */
+    void logOut(String username, String token);
 }
