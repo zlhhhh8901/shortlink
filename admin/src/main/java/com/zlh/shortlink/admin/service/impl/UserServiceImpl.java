@@ -119,7 +119,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
          */
         String uuid = UUID.randomUUID().toString();
         stringRedisTemplate.opsForHash().put("login_" + requestDto.getUsername(), uuid, JSON.toJSONString(userDO));
-        stringRedisTemplate.expire("login_" + requestDto.getUsername(), 30L, TimeUnit.MINUTES);
+        stringRedisTemplate.expire("login_" + requestDto.getUsername(), 25L, TimeUnit.DAYS); //图个方便暂改为25天
         return new UserLoginRespDTO(uuid);
     }
 
