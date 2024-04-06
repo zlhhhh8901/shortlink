@@ -12,7 +12,7 @@ import com.zlh.shortlink.admin.dto.req.ShortLinkGroupSortReqDTO;
 import com.zlh.shortlink.admin.dto.req.ShortLinkGroupUpdateReqDTO;
 import com.zlh.shortlink.admin.dto.resp.ShortLinkGroupRespDTO;
 import com.zlh.shortlink.admin.service.GroupService;
-import com.zlh.shortlink.admin.util.RandomGenerator;
+import com.zlh.shortlink.admin.toolkit.RandomGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

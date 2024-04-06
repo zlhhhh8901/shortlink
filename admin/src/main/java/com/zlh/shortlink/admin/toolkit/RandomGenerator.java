@@ -1,4 +1,4 @@
-package com.zlh.shortlink.admin.util;
+package com.zlh.shortlink.admin.toolkit;
 
 import java.security.SecureRandom;
 
