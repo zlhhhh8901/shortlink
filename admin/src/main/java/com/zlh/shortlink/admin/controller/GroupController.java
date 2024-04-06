@@ -3,13 +3,12 @@ package com.zlh.shortlink.admin.controller;
 import com.zlh.shortlink.admin.common.convention.result.Result;
 import com.zlh.shortlink.admin.common.convention.result.Results;
 import com.zlh.shortlink.admin.dto.req.ShortLinkGroupSaveReqDTO;
+import com.zlh.shortlink.admin.dto.req.ShortLinkGroupSortReqDTO;
+import com.zlh.shortlink.admin.dto.req.ShortLinkGroupUpdateReqDTO;
 import com.zlh.shortlink.admin.dto.resp.ShortLinkGroupRespDTO;
 import com.zlh.shortlink.admin.service.GroupService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,4 +36,33 @@ public class GroupController {
     public Result<List<ShortLinkGroupRespDTO>> listGroup(){
         return Results.success(groupService.listGroup());
     }
+
+    /**
+     * 修改短链接分组名称
+     */
+    @PutMapping("/api/short-link/v1/group")
+    public Result<Void> updateGroup(@RequestBody ShortLinkGroupUpdateReqDTO requestParam) {
+        groupService.updateGroup(requestParam);
+        return Results.success();
+    }
+
+    /**
+     * 删除短链接分组
+     */
+    @DeleteMapping("/api/short-link/v1/group")
+    public Result<Void> deleteGroup(@RequestParam String gid){
+        groupService.deleteGroup(gid);
+        return Results.success();
+    }
+
+    /**
+     * 短链接分组排序功能
+     * 前端排序，排序结果（集合）交由后端保存
+     */
+    @PutMapping("/api/short-link/v1/group/sort")
+    public Result<Void> sortGroup(@RequestBody List<ShortLinkGroupSortReqDTO> sortReqDTO){
+        groupService.sortGroup(sortReqDTO);
+        return Results.success();
+    }
+
 }
