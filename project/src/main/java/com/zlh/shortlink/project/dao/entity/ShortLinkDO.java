@@ -11,7 +11,7 @@ import java.util.Date;
  * 短链接实体
  */
 @Data
-@TableName("t_link_0")
+@TableName("t_link")
 public class ShortLinkDO extends BaseDO {
     /**
      * ID
