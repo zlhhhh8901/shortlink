@@ -3,7 +3,7 @@ package com.zlh.shortlink.admin.dao.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.zlh.shortlink.admin.database.BaseDO;
+import com.zlh.shortlink.admin.common.database.BaseDO;
 import lombok.Data;
 
 @Data

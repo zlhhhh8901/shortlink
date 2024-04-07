@@ -1,4 +1,4 @@
-package com.zlh.shortlink.admin.database;
+package com.zlh.shortlink.admin.common.database;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
